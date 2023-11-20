@@ -1,56 +1,33 @@
-# TS Hybrid Boilerplate
-Another boilerplate for ts projects, especifically to ts npm packages
+# Peer DNS Client ![NPM Downloads](https://img.shields.io/npm/dw/peer-dns-client)
+A small client to connect to a [Peer DNS Server](https://github.com/xutyxd/peer-dns)
 
-
-## Description
-A boiler plate that allow to generate TS hybrid packages with `mjs` and `cjs`
-
-## Build package
-Simply run `npm run build` and hybrid package will be generate
-NOTE: Files under ./mjs will be reemplace lines with ".class" to ".class.js" to be compatible with browsers
-
-#### Notes for MJS
-
-For `mjs` with `mjs-formatter.sh` all is OK because exists top level await.
-Check index.ts to find out that import is with `.js` instead of file without extension
-
-### Notes for CJS
-
-For `cjs` the process is to remove with `cjs-formatter` all top level awaits from `index.js` and use an eval to perform a `require`
-
-As `mjs` find out that require is with `.js`
-
-## Example of import
-
-#### Installation
+## **Installation**
 ``` bash
-npm i ts-hybrid-boilerplate
+npm install peer-dns-client
 ```
 
-#### Import in ES6 (Node/Web)
-``` ts
+## **Description**
+This client implements events of the Peer DNS Server to always stay aligned with server package updates
 
-import { HelloWorld } from 'ts-hybrid-boilerplate';
+## **Events**
 
-```
+- **Link**: An event triggered when a new peer connect to a domain that you are listening.
+It`s emits an object param with two properties: 
+   - **id**: Identifier of external connection
+   - **offer**: Optional parameter of type [RTCSessionDescription](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription)
+- **Candidates**: An event triggered when a peer with offer exchanged share it's candidates
+It`s emits an object param with two properties:
+  - **id**: Identifier of external connection
+  - **candidates**: An array of [RTCIceCandidate](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate)
 
-#### Import in CommonJS
-``` js
+## **Methods**
 
-const { HelloWorld } = require('ts-hybrid-boilerplate');
+- **Query**: Need only a parameter indicating a domain to join a listen for new connections
 
-```
+- **send.link**: Used to response a link event with received id and optional offer
 
-## Release
-At this moment package support `github` and `gitlab` CI/CD
-Configure env vars to handle it.
+- **send.candidates**: Used to share candidates with an id indicating the other peer and an array of candidates
 
-- `NPM_TOKEN`: Allow to deploy to `npmjs.com` configure `.npmrc` to push package to another package repository
-- `GH_TOKEN`: Allow to modify repository to add tags with releases (`GITHUB`)
-- `GITLAB_TOKEN`: Allo to modify repository to add tags with releases (`GITLAB`)
+- **exit**: Used to stop listening connections in a domain
 
-Below it uses semantic-release so the semantic-release guide is: https://github.com/semantic-release/semantic-release
-
-## NPM package to download and check compatibility
-
-https://www.npmjs.com/package/ts-hybrid-boilerplate
+- **close**: Used to close connection with Peer DNS Server

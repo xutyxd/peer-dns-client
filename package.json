@@ -1,7 +1,7 @@
 {
-  "name": "ts-hybrid-boilerplate",
+  "name": "peer-dns-client",
   "version": "1.0.0",
-  "description": "Another boilerplate for ts projects, especifically to ts npm packages",
+  "description": "A small client to connect to a Peer DNS Server",
   "type": "module",
   "main": "cjs/index.js",
   "module": "mjs/index.js",
@@ -26,9 +26,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xutyxd/ts-boilerplate.git"
+    "url": "git+https://github.com/xutyxd/peer-dns-client.git"
   },
-  "keywords": ["typescript", "hybrid", "mjs", "cjs", "boilerplate"],
+  "keywords": [
+    "typescript",
+    "hybrid",
+    "mjs",
+    "cjs",
+    "peer",
+    "dns",
+    "client",
+    "wrtc",
+    "webrtc",
+    "wrtc",
+    "signal",
+    "signaling",
+    "dns"
+  ],
   "author": "XutyXD",
   "license": "ISC",
   "bugs": {
@@ -36,12 +50,16 @@
   },
   "homepage": "https://github.com/xutyxd/ts-boilerplate#readme",
   "devDependencies": {
-    "@semantic-release/gitlab": "^9.2.0",
     "@semantic-release/github": "^9.0.6",
+    "@semantic-release/gitlab": "^9.2.0",
     "@semantic-release/npm": "^11.0.0",
     "@types/jest": "^29.5.3",
     "jest": "^29.6.2",
     "semantic-release": "^22.0.1",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "rxjs": "^7.8.1",
+    "socket.io-client": "^4.7.2"
   }
 }
